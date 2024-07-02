@@ -171,7 +171,7 @@ jobs:
       if: ${{ steps.buildtree.outputs.value == 'aosp' }}
       run: |
         source build/envsetup.sh
-        lunch twrp_${{ inputs.DEVICE_NAME }}-eng
+        lunch omni_${{ inputs.DEVICE_NAME }}-eng
       working-directory: workspace
       id: syncdevicedeps
       continue-on-error: true
@@ -236,7 +236,7 @@ jobs:
           export USE_RECOVERY_INSTALLER=true
           export RECOVERY_INSTALLER_PATH=bootable/recovery/installer
         fi
-        lunch twrp_${{ inputs.DEVICE_NAME }}-eng && make $(tr -d _ <<< ${{ inputs.BUILD_TARGET }})image -j$(nproc --all)
+        lunch ${{ inputs.DEVICE_NAME }}-eng && make $(tr -d _ <<< ${{ inputs.BUILD_TARGET }})image -j$(nproc --all)
       working-directory: workspace
 
     - name: Building recovery (Omni)
