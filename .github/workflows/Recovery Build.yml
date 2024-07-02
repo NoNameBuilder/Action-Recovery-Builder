@@ -126,7 +126,7 @@ jobs:
       run: |
         . build/envsetup.sh
         lunch ${{ inputs.DEVICE_MAKEFILE }}-eng
-        mka pbrp
+        mka recoveryimage 
       working-directory: workspace
 
     - name: Upload to Release
